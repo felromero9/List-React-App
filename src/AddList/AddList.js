@@ -8,7 +8,6 @@ class AddList extends React.Component{
     };
   }
   
-
   render(){
     return(
       <div className='addListContainer'>
@@ -32,7 +31,6 @@ class AddList extends React.Component{
    // console.log('submit', this.state); // show me what added to the list
     this.props.addItemListFn(this.state.todo);
     document.getElementById('addListInput').value = '';
-
   }
 
 }

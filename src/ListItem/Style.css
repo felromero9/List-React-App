@@ -1,4 +1,8 @@
 .itemStyle{
-  margin: 10px;
+  margin: 15px;
   cursor: pointer;
+}
+
+.completed{
+  text-decoration: line-through;
 }

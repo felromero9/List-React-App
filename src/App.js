@@ -1,7 +1,8 @@
 import React from 'react';
-import './App.css';
 import List from './List/List';
 import AddList from './AddList/AddList';
+
+import './App.css';
 
 class App extends React.Component {
   constructor() {
@@ -17,9 +18,9 @@ class App extends React.Component {
         <h1>
          List App!
        </h1>
+        <AddList  addItemListFn = { this.addItemList}  /> 
         <List updateItemListFn = {this.updateItemList}
           todos = {this.state.todos} />
-        <AddList  addItemListFn = { this.addItemList}  /> 
       </div>
     )
   }
@@ -42,19 +43,26 @@ class App extends React.Component {
     // will wait for the state update
     await this.setState({ todos: [...this.state.todos, {
       text: todo,
-      completed: false
+      completed: false //todo it convert in object 
     }] }); 
     localStorage.setItem('todos', JSON.stringify(this.state.todos)); // then will save into the local storage
     console.log(localStorage.getItem('todos'));
   } 
 
-  updateItemList = (todo) => {
+  updateItemList =  async (todo) => {
     const newItemList = this.state.todos.map( _todo =>{
-      return (todo === _todo) ? ( { text: todo.text, completed: !todo.completed }) :( { _todo } )
+      //return (todo === _todo) ? ( { text: todo.text, completed: !todo.completed }) : ( { _todo } )
+      if(todo === _todo)
+        return{
+          text: todo.text, 
+          completed: !todo.completed
+        }
+        else 
+          return _todo
     });
-    this.setState ({ todos: newItemList });
+    await this.setState ({ todos: newItemList });
+    localStorage.setItem('todos', JSON.stringify(this.state.todos));
     console.log(newItemList);
-
   }
 
 }

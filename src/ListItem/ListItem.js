@@ -8,7 +8,8 @@ class ListItem extends React.Component{
     const { todo } = this.props;
 
     return(
-      <div className={ 'itemStyle' + (todo.completed ? 'completed': ' ' ) }
+      <div 
+        className={ 'itemStyle' + (todo.completed ? ' completed': ' ' ) }
         onClick = {this.toggleItemList}>
         {todo.text}
       </div>
