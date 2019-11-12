@@ -6,17 +6,17 @@ class List extends React.Component{
 
   render(){
 
-    const { todos } = this.props;
+    const { items } = this.props;
 
     return(
-      <div className='listContainer'>
+      <div>
         {
-          todos.map((_todo, _index) => {
+          items.map((_item, _index) => {
             return(
             <ListItem 
               updateItemListFn={this.updateItemList}
               key={_index} 
-              todo={_todo} /> 
+              item={_item} /> 
             )
           })
         }
@@ -24,8 +24,8 @@ class List extends React.Component{
     );
   }
 
-  updateItemList = (todo) => {
-    this.props.updateItemListFn(todo);
+  updateItemList = (item) => {
+    this.props.updateItemListFn(item);
   }
 
 }

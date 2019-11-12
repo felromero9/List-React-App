@@ -5,19 +5,19 @@ class ListItem extends React.Component{
 
   render(){
 
-    const { todo } = this.props;
+    const { item } = this.props;
 
     return(
       <div 
-        className={ 'itemStyle' + (todo.completed ? ' completed': ' ' ) }
+        className={ 'itemStyle' + (item.completed ? ' completed': ' ' ) }
         onClick = {this.toggleItemList}>
-        {todo.text}
+        {item.text}
       </div>
     );
   }
 
   toggleItemList = () => {
-    this.props.updateItemListFn(this.props.todo);
+    this.props.updateItemListFn(this.props.item);
   }
 
 }
