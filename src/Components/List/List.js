@@ -17,9 +17,11 @@ class List extends React.Component{
               updateItemListFn={this.updateItemList}
               key={_index} 
               item={_item}
-              deleteItemsHandlerFn={ ()=> {
-                debugger;
-                this.props.deleteItemsHandlerFn(_index)}}
+              deleteItemsHandlerFn = {() => this.props.deleteItemsHandlerFn(this.props.key)}
+              //deleteItemsHandlerFn={ ()=> {
+                //debugger;
+                //this.props.deleteItemsHandlerFn(_index)
+                //console.log(_index)}}
             /> 
             )
           })

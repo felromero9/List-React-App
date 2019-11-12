@@ -48,7 +48,6 @@ class App extends React.Component {
     // will wait for the state update
     await this.setState({ items: [...this.state.items, {
       text: item,
-      //id: this.htmlId,
       completed: false //item it convert in object 
     }] }); 
     localStorage.setItem('items', JSON.stringify(this.state.items)); // then will save into the local storage
@@ -72,36 +71,20 @@ class App extends React.Component {
     
   }
 
-  /*nameChangeHandler = (event, id) => {
-    const itemIndex = this.state.items.findIndex(p => {
-      return p.id === id;
-    });
-
-    const item = {
-      ...this.state.items[itemIndex]
-    }
-
-    item.text = event.target.value;
-    const items = [...this.state.items];
-    items[itemIndex] = item;
-
-    this.setState({ items: items });
-  }*/
-
-  findIndexItem = (items,id) => {
+  /*findIndexItem = (items) => {
     const itemIndex = this.state.items.findIndex(p => {
       console.log(itemIndex);
       return p.id === id;
       
     });
-  }
+  }*/
 
   deleteItemsHandler = itemIndex => {
-    /* IMPORTANT !!  create a copy before manipulate */
+    // IMPORTANT !!  create a copy before manipulate 
     // const items = this.state.items.slice();
     const items = [...this.state.items]; 
     items.splice(itemIndex, 1);
-    this.setItem({ item: items });
+    this.setState({ items: items });
     localStorage.setItem('items', JSON.stringify(this.state.items));
   };
 
