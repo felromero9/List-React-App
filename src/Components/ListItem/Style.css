@@ -3,6 +3,11 @@
   cursor: pointer;
 }
 
+.inputStyle{
+  cursor:pointer;
+}
+
 .completed{
   text-decoration: line-through;
+  background-color: gray;
 }

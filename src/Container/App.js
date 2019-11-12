@@ -14,16 +14,18 @@ class App extends React.Component {
       items: []
     };
   }
-  
+
   render(){
     return(
-      <div> 
+      <div className="list is-hoverable">  
         <h1>
          List App!
        </h1>
-        <AddList  addItemListFn = { this.addItemList}  /> 
+        <AddList  addItemListFn = { this.addItemList} /> 
         <List updateItemListFn = {this.updateItemList}
-          items = {this.state.items} />
+          items = {this.state.items} 
+          deleteItemsHandlerFn={this.deleteItemsHandler}
+          changed = {this.state.nameChangeHandler}/>
       </div>
     )
   }
@@ -46,6 +48,7 @@ class App extends React.Component {
     // will wait for the state update
     await this.setState({ items: [...this.state.items, {
       text: item,
+      //id: this.htmlId,
       completed: false //item it convert in object 
     }] }); 
     localStorage.setItem('items', JSON.stringify(this.state.items)); // then will save into the local storage
@@ -66,7 +69,41 @@ class App extends React.Component {
     await this.setState ({ items: newItemList });
     localStorage.setItem('items', JSON.stringify(this.state.items));
     console.log(newItemList);
+    
   }
+
+  /*nameChangeHandler = (event, id) => {
+    const itemIndex = this.state.items.findIndex(p => {
+      return p.id === id;
+    });
+
+    const item = {
+      ...this.state.items[itemIndex]
+    }
+
+    item.text = event.target.value;
+    const items = [...this.state.items];
+    items[itemIndex] = item;
+
+    this.setState({ items: items });
+  }*/
+
+  findIndexItem = (items,id) => {
+    const itemIndex = this.state.items.findIndex(p => {
+      console.log(itemIndex);
+      return p.id === id;
+      
+    });
+  }
+
+  deleteItemsHandler = itemIndex => {
+    /* IMPORTANT !!  create a copy before manipulate */
+    // const items = this.state.items.slice();
+    const items = [...this.state.items]; 
+    items.splice(itemIndex, 1);
+    this.setItem({ item: items });
+    localStorage.setItem('items', JSON.stringify(this.state.items));
+  };
 
 }
 
