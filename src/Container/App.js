@@ -17,10 +17,7 @@ class App extends React.Component {
 
   render(){
     return(
-      <div className="list is-hoverable">  
-        <h1>
-         List App!
-       </h1>
+      <div className="main-container">  
         <AddList  addItemListFn = { this.addItemList} /> 
         <List updateItemListFn = {this.updateItemList}
           items = {this.state.items} 
@@ -56,7 +53,7 @@ class App extends React.Component {
 
   updateItemList =  async (item) => {
     const newItemList = this.state.items.map( _item =>{
-      //return (item === item) ? ( { text: item.text, completed: !item.completed }) : ( { _item } )
+      //return (item === _item) ? ( { text: item.text, completed: !item.completed }) : ( { _item } )
       if(item === _item)
         return{
           text: item.text, 

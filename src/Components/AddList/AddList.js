@@ -1,10 +1,9 @@
 import React from 'react';
 
 //import '../../Sass/App.sass';
+
 import 'react-bulma-components/dist/react-bulma-components.min.css';
 import { Button } from 'react-bulma-components';
-
-
 
 class AddList extends React.Component{
   constructor(){
@@ -16,17 +15,21 @@ class AddList extends React.Component{
   
   render(){
     return(
-      <div>
+      <div style={{ margin: "1em" }}>
         <form onSubmit={(e) => this.submitItem(e)}>
-          <input 
-            placeholder = 'Item'
-            type='text' 
-            id='addListInput'
-            onChange={(e) => this.updateInput(e)} />
-           <Button 
-              className='button is-small'
-              type='submit'> Add Item To List
-          </Button>
+          <div className="field has-addons">
+            <p className="control">
+              <input
+                placeholder='Item'
+                type='text'
+                id='addListInput'
+                className="input"
+                onChange={(e) => this.updateInput(e)} />
+            </p>
+            <p className="control">
+              <Button>Add Item To List</Button>
+            </p>
+          </div>
         </form>
       </div>
     );

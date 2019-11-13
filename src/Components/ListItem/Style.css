@@ -1,6 +1,6 @@
 .itemStyle{
-  margin: 15px;
- /* cursor: pointer;*/
+  margin: 10px;
+  /* cursor: pointer;*/
 }
 
 .list{
@@ -8,12 +8,26 @@
     height: 50px;
 }
 
-.a{
+.a {
   width: 400px;
   height: 30px;
-
 }
+
 .completed{
   /*text-decoration: line-through;*/
   background-color: gray;
+  color:white;
+}
+.small-margin {
+  margin: 0.3em;
+}
+.textSpan{
+  margin: 2em;
+}
+
+.panel {
+  width: 500px;
+}
+.panel-block{
+  width: 500px;
 }

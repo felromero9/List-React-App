@@ -11,18 +11,20 @@ class ListItem extends React.Component {
     
 
     return (
-      <div className="list is-hoverable"> 
-        <a className={"list-itemStyle" + (item.completed ? " completed" : " ")}>
-          <span 
+      <div className="panel-block is-hoverable"> 
+        <a href="/#"  className={"itemStyle" + (item.completed ? " completed" : " ")}>
+          <span className="small-margin"
             onClick={this.toggleItemList}>
-            <i className="far fa-circle"></i> 
+            <i className={"far fa-circle" + (item.completed ? "" : "fas fa-circle ") }></i> 
           </span>
-          
-          { item.text }
-          <span 
-          onClick={this.props.deleteItemsHandlerFn}>
-        <i className="fas fa-trash-alt"></i>
-        </span>
+          <span className="textSpan">{ item.text }</span>
+          <span className="small-margin"
+            onClick={this.props.deleteItemsHandlerFn}>
+            <i className="fas fa-trash-alt"></i>
+          </span>
+          <span>
+          <i className="far fa-edit"></i>
+          </span>
         </a>
       </div>
     );

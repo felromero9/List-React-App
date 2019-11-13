@@ -9,7 +9,7 @@ class List extends React.Component{
     const { items } = this.props;
 
     return(
-      <div>
+      <div className="panel"> 
         {
           items.map((_item, _index) => {
             return(
