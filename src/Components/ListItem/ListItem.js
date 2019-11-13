@@ -19,7 +19,7 @@ class ListItem extends React.Component {
           </span>
           
           { item.text }
-                
+          
         </form>
         <Button 
           onClick={this.props.deleteItemsHandlerFn}> delete

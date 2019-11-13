@@ -17,7 +17,7 @@ class List extends React.Component{
               updateItemListFn={this.updateItemList}
               key={_index} 
               item={_item}
-              deleteItemsHandlerFn = {() => this.props.deleteItemsHandlerFn(this.props.key)}
+              deleteItemsHandlerFn = {() => this.props.deleteItemsHandlerFn(_index)}
               //deleteItemsHandlerFn={ ()=> {
                 //debugger;
                 //this.props.deleteItemsHandlerFn(_index)

@@ -71,7 +71,7 @@ class App extends React.Component {
     
   }
 
-  /*findIndexItem = (items) => {
+  /*findIndexItem = (items, id) => {
     const itemIndex = this.state.items.findIndex(p => {
       console.log(itemIndex);
       return p.id === id;
