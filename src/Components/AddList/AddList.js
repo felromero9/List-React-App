@@ -15,7 +15,7 @@ class AddList extends React.Component{
   
   render(){
     return(
-      <div style={{ margin: "1em" }}>
+      <div>
         <form onSubmit={(e) => this.submitItem(e)}>
           <div className="field has-addons">
             <p className="control">

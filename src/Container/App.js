@@ -18,11 +18,11 @@ class App extends React.Component {
   render(){
     return(
       <div className="main-container">  
-        <AddList  addItemListFn = { this.addItemList} /> 
         <List updateItemListFn = {this.updateItemList}
           items = {this.state.items} 
           deleteItemsHandlerFn={this.deleteItemsHandler}
           changed = {this.state.nameChangeHandler}/>
+        <AddList  addItemListFn = { this.addItemList} />
       </div>
     )
   }

@@ -1,33 +1,33 @@
-.itemStyle{
-  margin: 10px;
-  /* cursor: pointer;*/
+.panel-block:hover {
+  background-color: #D3D3D3;
 }
 
-.list{
-    width: 500px;
-    height: 50px;
+.item-box{
+  width: 290px;
 }
 
-.a {
-  width: 400px;
-  height: 30px;
-}
-
-.completed{
-  /*text-decoration: line-through;*/
-  background-color: gray;
-  color:white;
-}
-.small-margin {
-  margin: 0.3em;
-}
-.textSpan{
-  margin: 2em;
+.item-style{
+  margin-left: 25px;
 }
 
 .panel {
-  width: 500px;
+  width: inherit;
 }
-.panel-block{
-  width: 500px;
+
+
+
+
+.small-margin {
+  margin: 0.3em;
+}
+
+.small-margin-right{
+  margin: 0.3em;
+  float: right;
+  position: relative;
+}
+
+.textSpan{
+  text-align: left;
+  margin-left: 15px;
 }
