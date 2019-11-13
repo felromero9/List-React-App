@@ -3,7 +3,7 @@ import React from "react";
 import "./Style.css";
 
 import "react-bulma-components/dist/react-bulma-components.min.css";
-import { Button } from "react-bulma-components";
+
 
 class ListItem extends React.Component {
   render() {
@@ -11,19 +11,19 @@ class ListItem extends React.Component {
     
 
     return (
-      <div>
-        <form  className={"itemStyle" + (item.completed ? " completed" : " ")}>
+      <div className="list is-hoverable"> 
+        <a className={"list-itemStyle" + (item.completed ? " completed" : " ")}>
           <span 
             onClick={this.toggleItemList}>
             <i className="far fa-circle"></i> 
           </span>
           
           { item.text }
-          
-        </form>
-        <Button 
-          onClick={this.props.deleteItemsHandlerFn}> delete
-        </Button>
+          <span 
+          onClick={this.props.deleteItemsHandlerFn}>
+        <i className="fas fa-trash-alt"></i>
+        </span>
+        </a>
       </div>
     );
   }
