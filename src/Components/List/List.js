@@ -1,41 +1,39 @@
-import React from 'react';
-import ListItem from '../ListItem/ListItem';
+import React from "react";
+import ListItem from "../ListItem/ListItem";
 
-
-class List extends React.Component{
-
-  render(){
-
+class List extends React.Component {
+  render() {
     const { items } = this.props;
 
-    return(
-      <div className="panel"> 
-        {
-          items.map((_item, _index) => {
-            return(
-            <ListItem 
-              updateItemListFn={this.updateItemList}
-              key={_index} 
+    return (
+      <div className="panel">
+        {items.map((_item, _index) => {
+          return (
+            <ListItem
+              createItemListFn={this.createItemList}
+              key={_index}
               item={_item}
-              deleteItemsHandlerFn = { () => { 
-                  if(window.confirm('Are you sure to delete this item?')) {this.props.deleteItemsHandlerFn(_index)}
+              modifyItemHandlerFn={() => this.props.modifyItemHandler(_index)}
+              deleteItemsHandlerFn={() => {
+                if (window.confirm("Are you sure to delete this item?")) {
+                  this.props.deleteItemsHandlerFn(_index);
+                }
               }}
+              toggleItemListFn={() => this.props.toggleItemListFn(_index)}
               //deleteItemsHandlerFn={ ()=> {
-                //debugger;
-                //this.props.deleteItemsHandlerFn(_index)
-                //console.log(_index)}}
-            /> 
-            )
-          })
-        }
+              //debugger;
+              //this.props.deleteItemsHandlerFn(_index)
+              //console.log(_index)}}
+            />
+          );
+        })}
       </div>
     );
   }
 
-  updateItemList = (item) => {
-    this.props.updateItemListFn(item);
-  }
-
+  createItemList = item => {
+    this.props.createItemListFn(item);
+  };
 }
 
 export default List;
