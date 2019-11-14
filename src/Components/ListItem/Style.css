@@ -11,11 +11,8 @@
 }
 
 .panel {
-  width: inherit;
+  width: auto;
 }
-
-
-
 
 .small-margin {
   margin: 0.3em;

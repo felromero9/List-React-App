@@ -15,7 +15,7 @@ class ListItem extends React.Component {
         <a href="/#"  className={"has-text-black item-box"}>
           <span className="small-margin"
             onClick={this.toggleItemList}>
-            <i className = {(item.completed ? "fas fa-circle" : "far fa-circle ")}></i> 
+            <i className = {(item.completed ? "far fa-check-square" : "far fa-square ")}></i> 
           </span>
           <span className="textSpan">
             { item.text }

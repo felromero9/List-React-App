@@ -64,8 +64,6 @@ class App extends React.Component {
     });
     await this.setState ({ items: newItemList });
     localStorage.setItem('items', JSON.stringify(this.state.items));
-    console.log(newItemList);
-    
   }
 
   /*findIndexItem = (items, id) => {
@@ -76,15 +74,26 @@ class App extends React.Component {
     });
   }*/
 
+
+
+
+
+
+
+
+
+  
+
   deleteItemsHandler = itemIndex => {
-    // IMPORTANT !!  create a copy before manipulate 
+    // create a copy before manipulate 
     // const items = this.state.items.slice();
     const items = [...this.state.items]; 
     items.splice(itemIndex, 1);
     this.setState({ items: items });
     localStorage.setItem('items', JSON.stringify(this.state.items));
+    console.log(this.state.items)
   };
 
-}
+};
 
 export default App;
