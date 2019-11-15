@@ -1,6 +1,6 @@
 import React from 'react';
 
-import './ModalStyle.css';
+import './ModalStyle.scss';
 
 export default class EditModal extends React.Component {
     constructor(props) {

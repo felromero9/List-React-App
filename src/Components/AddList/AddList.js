@@ -1,6 +1,6 @@
 import React from "react";
 
-import "../ListItem/Style.css";
+import "../ListItem/Style.scss";
 
 import "react-bulma-components/dist/react-bulma-components.min.css";
 import { Button } from "react-bulma-components";
@@ -63,9 +63,9 @@ class AddList extends React.Component {
 
   submitItem = e => {
     e.preventDefault();
-    // console.log('submit', this.state); // show me what added to the list
     this.props.addItemListFn(this.state.item);
     document.getElementById("addListInput").value = "";
+    console.log('submit', this.state); // show me what added to the list
   };
 }
 

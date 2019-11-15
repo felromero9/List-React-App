@@ -1,6 +1,6 @@
 import React from "react";
 
-import "./Style.css";
+import "./Style.scss";
 
 import "react-bulma-components/dist/react-bulma-components.min.css";
 

@@ -5,7 +5,7 @@ import React from "react";
 import List from "../Components/List/List";
 import AddList from "../Components/AddList/AddList";
 
-import "./App.css";
+import "./App.scss";
 import EditModal from "../Components/EditModal/EditModal";
 
 class App extends React.Component {
@@ -54,7 +54,7 @@ class App extends React.Component {
     this.setState(state);
   };
 
-  saveEdit = value => {//recive th
+  saveEdit = value => {
     const items = [...this.state.items]; //hace copia
 
     let itemIndex = items.findIndex(e => e === this.state.editingItem);// search the item to modify 
@@ -103,7 +103,6 @@ class App extends React.Component {
 
   createItemList = async item => {
     const newItemList = this.state.items.map(_item => {
-      //return (item === _item) ? ( { text: item.text, completed: !item.completed }) : ( { _item } )
       if (item === _item)
         return {
           text: item.text,

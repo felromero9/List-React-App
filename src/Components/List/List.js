@@ -15,7 +15,7 @@ class List extends React.Component {
               item={_item}
               modifyItemHandlerFn={() => this.props.modifyItemHandler(_index)}
               deleteItemsHandlerFn={() => {
-                if (window.confirm("Are you sure to delete this item?")) {
+                if (window.confirm("Are you sure you want to delete this item?")) {
                   this.props.deleteItemsHandlerFn(_index);
                 }
               }}
