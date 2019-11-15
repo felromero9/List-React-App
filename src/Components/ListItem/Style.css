@@ -1,12 +1,12 @@
 .panel-block:hover {
-  background-color: #D3D3D3;
+  background-color: #d3d3d3;
 }
 
-.item-box{
+.item-box {
   width: 290px;
 }
 
-.item-style{
+.item-style {
   margin-left: 25px;
 }
 
@@ -18,13 +18,45 @@
   margin: 0.3em;
 }
 
-.small-margin-right{
+.small-margin-right {
   margin: 0.3em;
   float: right;
   position: relative;
 }
 
-.textSpan{
+.textSpan {
   text-align: left;
   margin-left: 15px;
+}
+
+.field.has-addons .control:last-child:not(:only-child) .button {
+  width: 76px;
+  padding-left: 5px;
+  padding-right: 5px;
+  background-color: #1a1919;
+  color: white;
+}
+
+.field.has-addons {
+  float: left;
+  padding: 1em;
+}
+
+.hideSubmitButton {
+  display: none;
+}
+
+.showSubmitButton {
+  display: inherit;
+}
+
+.iconToggle {
+  float: right;
+  border: 1px solid #dbdbdb;
+  margin-right: 1px;
+  margin-left: 1px;
+  padding-top: 2px;
+  padding-right: 2px;
+  padding-bottom: 2px;
+  padding-left: 2px;
 }

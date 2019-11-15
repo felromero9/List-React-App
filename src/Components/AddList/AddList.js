@@ -1,52 +1,72 @@
-import React from 'react';
+import React from "react";
 
-//import '../../Sass/App.sass';
+import "../ListItem/Style.css";
 
-import 'react-bulma-components/dist/react-bulma-components.min.css';
-import { Button } from 'react-bulma-components';
+import "react-bulma-components/dist/react-bulma-components.min.css";
+import { Button } from "react-bulma-components";
+import ToggleDisplay from "react-toggle-display";
 
-class AddList extends React.Component{
-  constructor(){
+class AddList extends React.Component {
+  constructor() {
     super();
     this.state = {
-      item: ''
+      item: "",
+      condition: false
     };
+    this.handleClick = this.handleClick.bind(this);
   }
-  
-  render(){
-    return(
+
+  handleClick() {
+    //toggle form button with TOGGLE DISPLAY FROM NPM - react-toggle-display
+    this.setState({
+      show: !this.state.show
+    });
+    console.log(this.state.show);
+  }
+
+  render() {
+    return (
       <div>
-        <form onSubmit={(e) => this.submitItem(e)}>
-          <div className="field has-addons">
-            <p className="control">
-              <input
-                placeholder='Item'
-                type='text'
-                id='addListInput'
-                className="input"
-                onChange={(e) => this.updateInput(e)} />
-            </p>
-            <p className="control">
-              <Button>Add Item To List</Button>
-            </p>
+        <p className="iconToggle">
+          <span onClick={() => this.handleClick()}>
+            <i className="fas fa-plus"> </i>
+            {this.state.show ? "hide button" : "add item"}
+          </span>
+        </p>
+        <ToggleDisplay if={this.state.show}>
+          <div className={ this.state.show ? " showSubmitButton " : " hideSubmitButton " }>
+            <form onSubmit={e => this.submitItem(e)}>
+              <div className="field has-addons">
+                <p className="control">
+                  <input
+                    placeholder="Item"
+                    type="text"
+                    id="addListInput"
+                    className="input"
+                    onChange={e => this.updateInput(e)}
+                  />
+                </p>
+                <p className="control">
+                  <Button>Add Item</Button>
+                </p>
+              </div>
+            </form>
           </div>
-        </form>
+        </ToggleDisplay>
       </div>
     );
   }
 
   updateInput = e => {
-
     this.setState({ item: e.target.value });
-  }
+  };
 
-  submitItem = (e) => {
+  submitItem = e => {
     e.preventDefault();
-   // console.log('submit', this.state); // show me what added to the list
+    // console.log('submit', this.state); // show me what added to the list
     this.props.addItemListFn(this.state.item);
-    document.getElementById('addListInput').value = '';
-  }
-
+    document.getElementById("addListInput").value = "";
+  };
 }
 
 export default AddList;

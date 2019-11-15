@@ -6,11 +6,14 @@ import List from "../Components/List/List";
 import AddList from "../Components/AddList/AddList";
 
 import "./App.css";
+import EditModal from "../Components/EditModal/EditModal";
+
 class App extends React.Component {
   constructor() {
     super();
     this.state = {
-      items: []
+      items: [],
+      editingItem: null
     };
   }
 
@@ -21,18 +24,57 @@ class App extends React.Component {
           createItemListFn={this.createItemList}
           items={this.state.items}
           deleteItemsHandlerFn={this.deleteItemsHandler}
-          changed={this.state.nameChangeHandler}
           modifyItemHandlerFn={this.modifyItemHandler}
           toggleItemListFn={this.toggleItemListHandler}
+          setItemToEdit={this.setItemToEdit}
         />
         <AddList addItemListFn={this.addItemList} />
+
+        { 
+          this.state.editingItem 
+          ? (
+            <EditModal /* this is React-Modal */
+              save={value => this.saveEdit(value)}
+              close={() => this.closeEdit()}
+              item={this.state.editingItem}
+            />
+          ) : (
+            <div />
+          )
+        }
+
       </div>
     );
   }
 
+  closeEdit = () => {
+    let state = this.state;
+    state.editingItem = null;
+
+    this.setState(state);
+  };
+
+  saveEdit = value => {//recive th
+    const items = [...this.state.items]; //hace copia
+
+    let itemIndex = items.findIndex(e => e === this.state.editingItem);// search the item to modify 
+
+    items[itemIndex].text = value;// make the modification  
+    this.setState({ items: items, editingItem: null });// save the items
+    localStorage.setItem("items", JSON.stringify(items));
+
+    console.log("AFTER:Items from storage:", localStorage.getItem("items"));
+  };
+
+  setItemToEdit = item => {
+    let state = this.state;
+    state.editingItem = item;
+
+    this.setState(state);
+  };
+
   componentDidMount = () => {
     const items = localStorage.getItem("items");
-    // (items)? console.log('Has items', items) : console.log('No items');
     if (items) {
       const savedItems = JSON.parse(items);
       this.setState({ items: savedItems });
@@ -74,14 +116,6 @@ class App extends React.Component {
     localStorage.setItem("items", JSON.stringify(this.state.items));
   };
 
-  /*findIndexItem = (items, id) => {
-    const itemIndex = this.state.items.findIndex(p => {
-      console.log(itemIndex);
-      return p.id === id;
-      
-    });
-  }*/
-
   modifyItemHandler = (itemIndex, itemNewTxt) => {
     const items = [...this.state.items];
     items[itemIndex].setState({ editMode: true });
@@ -93,12 +127,18 @@ class App extends React.Component {
     // create a copy before manipulate
     // const items = this.state.items.slice();
     const items = [...this.state.items];
-    console.log("DELETE-BEFORE:Items from storage:", localStorage.getItem("items"));
+    console.log(
+      "DELETE-BEFORE:Items from storage:",
+      localStorage.getItem("items") 
+    );
 
     items.splice(itemIndex, 1);
     this.setState({ items: items });
     localStorage.setItem("items", JSON.stringify(items));
-    console.log("DELETE-AFTER:Items from storage:", localStorage.getItem("items"));
+    console.log(
+      "DELETE-AFTER:Items from storage:",
+      localStorage.getItem("items")
+    );
   };
 
   toggleItemListHandler = async itemIndex => {
@@ -106,12 +146,12 @@ class App extends React.Component {
     console.log("BEFORE:Items from storage:", localStorage.getItem("items"));
 
     items[itemIndex].completed = !items[itemIndex].completed;
-    this.setState({items: items});
+    this.setState({ items: items });
     localStorage.setItem("items", JSON.stringify(items));
-    
+
     console.log("AFTER:Items from storage:", localStorage.getItem("items"));
     window.location.reload(false);
-  }
+  };
 }
 
 export default App;

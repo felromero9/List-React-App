@@ -20,10 +20,7 @@ class List extends React.Component {
                 }
               }}
               toggleItemListFn={() => this.props.toggleItemListFn(_index)}
-              //deleteItemsHandlerFn={ ()=> {
-              //debugger;
-              //this.props.deleteItemsHandlerFn(_index)
-              //console.log(_index)}}
+              setItemToEdit={() => this.props.setItemToEdit(_item)}
             />
           );
         })}
